@@ -1,0 +1,22 @@
+
+spring:
+  datasource:
+    url: jdbc:postgresql://aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres?sslmode=require
+    username: postgres.qpzszzrsrracedrgpwlp
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 5
+      connection-timeout: 30000
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+
+
+sams:
+  demo-today: ${SAMS_DEMO_TODAY:2026-11-11}
+  seed-demo-data: ${SEED_DEMO_DATA:false}
+  cors:
+    allowed-origins: ${SAMS_CORS_ORIGINS:http://localhost:*,http://127.0.0.1:*}

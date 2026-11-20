@@ -1,0 +1,13 @@
+# Run with: --spring.profiles.active=mysql
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/sams?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC}
+    username: ${DB_USER:root}
+    password: ${Nagasai@117899}
+  jpa:
+    hibernate:
+      ddl-auto: update
+sams:
+  demo-today: ""
+  # Demo rows are only inserted when the tables are empty. Set to false in production.
+  seed-demo-data: ${SEED_DEMO_DATA:false}

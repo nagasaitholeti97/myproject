@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: sams-backend
+  datasource:
+    url: jdbc:h2:mem:sams;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    open-in-view: false
+    properties:
+      hibernate.format_sql: false
+server:
+  port: 8080
+sams:
+  minimum-percentage: 75
+  # The sample data is built for 2026-11-11. Leave empty to use the real date once real data is loaded.
+  demo-today: "2026-11-11"
+  seed-demo-data: true
+  jwt:
+    secret: ${SAMS_JWT_SECRET:change-this-development-secret-to-at-least-32-characters}
+    ttl-minutes: 120
+  cors:
+    allowed-origins: "http://localhost:*,http://127.0.0.1:*"
