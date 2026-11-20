@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Student Attendance Management</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="wm" aria-hidden="true"></div>
+<header class="top gutter">
+  <div class="top-in">
+    <div class="brand" aria-label="SAMS"><i>SAMS</i></div>
+    <div class="theme-wrap"><button class="icon-btn" id="themeBtn" type="button" aria-label="Switch light or dark theme" title="Switch theme">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button></div>
+  </div>
+</header>
+
+<main class="page gutter">
+  <section class="view" id="v-portal"><div id="portal"></div></section>
+
+  <section class="view" id="v-flowchart" hidden>
+    <header class="vh"><h2>Screen flow</h2><p>The user journey from your flowchart. Select any box to open that screen in the live portal as a demo user.</p></header>
+    <div class="diagram"><svg id="flowSvg" viewBox="0 0 1000 690" role="img" aria-label="Flowchart: login leads to student screens (profile, attendance, academic calendar) and faculty screens (profile, classes attending with three class sections)"></svg></div>
+    <div class="key"><span style="--c:var(--accent)"><i></i>Entry</span><span style="--c:var(--ok)"><i></i>Role decision</span><span style="--c:var(--pink)"><i></i>Student screens</span><span style="--c:var(--event)"><i></i>Faculty screens</span><span style="--c:var(--warn)"><i></i>Classes</span></div>
+  </section>
+
+  <section class="view" id="v-architecture" hidden>
+    <header class="vh"><h2>System architecture</h2><p>How a request moves from the browser to the database. Select any block for what it does and which tables it touches.</p></header>
+    <div class="arch-wrap">
+      <div class="arch" id="archMap"></div>
+      <aside class="card detail" id="archDetail" aria-live="polite"></aside>
+    </div>
+  </section>
+
+  <section class="view" id="v-data-model" hidden>
+    <header class="vh"><h2>Data model</h2><p>Entity-relationship diagram for six tables. Select a table to see its columns, relationships and how many rows the demo currently holds.</p></header>
+    <div class="er-box"><svg id="erSvg" viewBox="0 0 1200 820" role="img" aria-label="Entity-relationship diagram of Student, Faculty, Subject, Section, Attendance and Academic Calendar"></svg></div>
+    <div class="er-grid">
+      <div class="card" id="erPanel"></div>
+      <div class="card">
+        <div class="row" style="justify-content:space-between;margin-bottom:12px"><h3>PostgreSQL schema</h3><button class="btn ghost sm" id="copySql" type="button">Copy SQL</button></div>
+        <pre class="sql" id="sqlOut" tabindex="0"></pre>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="foot gutter"><div>Demo with sample students, faculty and dates. Nothing is saved or emailed; changes reset when you reload.</div></footer>
+<div id="toast" role="status" aria-live="polite"></div>
+<script src="js/app.js"></script>
+</body>
+</html>

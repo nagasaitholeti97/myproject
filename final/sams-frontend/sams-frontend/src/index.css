@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+/* Theme tokens are CSS variables so light, dark and the faculty accent switch without changing any class names. */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-mut: var(--mut);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accentink: var(--accent-ink);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-bad: var(--bad);
+  --color-event: var(--event);
+  --color-teal: var(--teal);
+  --font-head: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+:root {
+  --bg: #f3f5f9; --surface: #ffffff; --surface-2: #edf0f7; --ink: #141b2d; --mut: #5b6478; --line: #dce1ec;
+  --accent: #3b5bdb; --accent-ink: #ffffff;
+  --ok: #12805c; --warn: #9a5b00; --bad: #c0262d; --event: #7048e8; --teal: #0d9488;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1320; --surface: #181d2d; --surface-2: #222942; --ink: #e8ebf3; --mut: #9aa3b8; --line: #2c3450;
+    --accent: #8da2ff; --accent-ink: #0f1320;
+    --ok: #4cd6a3; --warn: #f2b84b; --bad: #ff8087; --event: #b197fc; --teal: #2dd4bf;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1320; --surface: #181d2d; --surface-2: #222942; --ink: #e8ebf3; --mut: #9aa3b8; --line: #2c3450;
+  --accent: #8da2ff; --accent-ink: #0f1320;
+  --ok: #4cd6a3; --warn: #f2b84b; --bad: #ff8087; --event: #b197fc; --teal: #2dd4bf;
+  color-scheme: dark;
+}
+
+/* Faculty portal uses a green accent */
+:root[data-role="faculty"] { --accent: #0f8a5f; }
+@media (prefers-color-scheme: dark) {
+  :root[data-role="faculty"]:not([data-theme="light"]) { --accent: #4cd6a3; }
+}
+:root[data-role="faculty"][data-theme="dark"] { --accent: #4cd6a3; }
+
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-sans); font-size: 15px; line-height: 1.5; }
+
+/* Logo watermark behind every page */
+.wm {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.1;
+  background: url(/logo.png) no-repeat center 58% / auto min(72vh, 640px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .wm, :root:not([data-theme="light"]) .logo-mono { filter: brightness(0) invert(1); }
+  :root:not([data-theme="light"]) .wm { opacity: 0.08; }
+}
+:root[data-theme="dark"] .wm, :root[data-theme="dark"] .logo-mono { filter: brightness(0) invert(1); }
+:root[data-theme="dark"] .wm { opacity: 0.08; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}
